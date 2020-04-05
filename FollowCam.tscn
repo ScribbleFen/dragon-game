@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Follow.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+params_cull_mode = 1
+
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 1 )
+top_radius = 0.001
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1, 1, 1 )
+
+[node name="Follow" type="Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.243, 38.4525 )
+script = ExtResource( 1 )
+target = NodePath("../Dragon")
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73689, 6.84046 )
+far = 1000.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Camera"]
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Label" type="Label" parent="."]
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
